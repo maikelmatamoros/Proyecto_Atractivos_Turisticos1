@@ -13,7 +13,7 @@ class View {
         $path=$config->get('viewFolder').$nombreVista;
         
         if(is_file($path) == FALSE){
-            trigger_error('Page '.$path. ' doesn´t exist', E_USER_NOTICE);
+            trigger_error('Page '.$path. ' doesnt exist', E_USER_NOTICE);
             return FALSE;
         }// if
         

@@ -31,47 +31,48 @@
                 <div class="row">
                     <div class="col-lg-6 portfolio-item">
                         <div class="card-body">
-                            <label>Digite un estimado total del presupuesto en colones:</label>
+                            <label>Estimado total del presupuesto en colones:</label>
                             <div class="form-group">
-                                <input type="number" class="form-control" name="budget" id="budget" placeholder="10000"
-                                    required="required">
+                                <select class="form-control" name="precio" id="precio">
+                                    <option value="10000">Menos de 10000</option>
+                                    <option value="50000">Más de 10000 y menos de 50000</option>
+                                    <option value="50001">Más de 50000</option>
+                                </select>
                             </div>
                             <label>Seleccione el tipo de turismo que desea hacer:</label>
                             <div class="form-group">
-                                <select class="form-control" name="carType" id="carType">
-                                    <option value="0">Tranquilo</option>
-                                    <option value="1">Aventura</option>
-                                    <option value="2">Cultural</option>
-                                    <option value="3">Extremo</option>
-                                    <option value="4">Explorador</option>
+                                <select class="form-control" name="tipoTurista" id="tipoTurista">
+                                    <option value="Tranquilo">Tranquilo</option>
+                                    <option value="Aventurero">Aventura</option>
+                                    <option value="Extremo">Extremo</option>
+                                    <option value="Explorador">Explorador</option>
                                 </select>
                             </div>
                             <label>Seleccione el tipo de ambiente que desea:</label>
                             <div class="form-group">
-                                <select class="form-control" name="stars" id="stars">
-                                    <option value="1">Ciudad</option>
-                                    <option value="2">Montaña</option>
-                                    <option value="3">Playa</option>
-                                    <option value="4">Volcan</option>
-                                    <option value="5">Mar</option>
-                                    <option value="6">Reserva</option>
-                                    <option value="6">Parque</option>
+                                <select class="form-control" name="tipoLugar" id="tipoLugar">
+                                    <option value="Museo">Museo</option>
+                                    <option value="Montaña">Montaña</option>
+                                    <option value="Playa">Playa</option>
+                                    <option value="Volcán">Volcán</option>
+                                    <option value="Mar">Mar</option>
+                                    <option value="Reserva">Reserva</option>
+                                    <option value="Parque">Parque</option>
                                 </select>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-6 portfolio-item">
                         <div class="card-body">
-                            <label>Seleccionar la provincia deseada:</label>
+                            <label>Seleccionar las estrellas:</label>
                             <div class="form-group">
-                                <select class="form-control" name="provinces" id="provinces">
-                                    <option value="1">Cartago</option>
-                                    <option value="2">San José</option>
-                                    <option value="3">Heredia</option>
-                                    <option value="4">Alajuela</option>
-                                    <option value="5">Puntarenas</option>
-                                    <option value="6">Guanacaste</option>
-                                    <option value="7">Limón</option>
+                                <select class="form-control" name="estrellas" id="estrellas">
+                                    <option value="0">0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
                                 </select>
                             </div>
                             <br />
@@ -79,7 +80,7 @@
                                 <font color="#ff0000">
                                     <font size="4"> </font>
                                 </font>
-                                <input value="BUSCAR" class="btn btn-buscar btn-outline-secondary btn-md"
+                                <input value="BUSCAR" id="button" class="btn btn-buscar btn-outline-secondary btn-md"
                                      type="button">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             </div>
                         </div>

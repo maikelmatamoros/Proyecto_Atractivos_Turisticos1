@@ -19,7 +19,7 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <script type="text/javascript" src="public/js/siteMap.js"></script>  
         <script type="text/javascript" src="public/js/jquery-3.3.1.js"></script>
-        <script type="text/javascript" src="public/js/siteMap.js"></script>
+        <!-- <script type="text/javascript" src="public/js/siteMap.js"></script> -->
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.js"></script>
 
         <script src="https://kit.fontawesome.com/0ca66e1d09.js" crossorigin="anonymous"></script>
