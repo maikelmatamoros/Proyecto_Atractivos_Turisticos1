@@ -2,6 +2,12 @@
 <!-- /.container -->
 
 <!-- Footer -->
+        <div class="jumbotron text-center" Style="background-color: white;">
+            <div class="align-center text-center">
+                <div id="graph"></div>
+            </div>
+        </div>
+        
 <footer class="py-5 bg-dark">
     <div class="container">
         <div class="m-0 text-center text-white">

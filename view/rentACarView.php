@@ -1,5 +1,5 @@
 <?php
-include_once 'public/header.php';
+include 'public/header.php';
 ?>
 <br/>
 <br/>
@@ -55,32 +55,15 @@ include_once 'public/header.php';
                 <form name="rentACar">
                     <div class="row">
                         <div class="col-lg-6 portfolio-item">
-                            <div class="card-body">
-                                <label >Digite un estimado total del presupuesto para el alquiler de un auto:</label> 
-                                <div class="form-group">
-                                    <input type="number" class="form-control" name="budget" id="budget" placeholder="$100" required="required">
-                                </div>                
+                            <div class="card-body">           
                                 <label >Seleccionar el tipo de vehículo a alquilar:</label> 
                                 <div class="form-group">
                                     <select class="form-control" name="carType" id="carType">
-                                        <option value="0">Sedan</option>
-                                        <option value="1">SUV</option>
-                                        <option value="2">Pick up</option>
-                                        <option value="3">Camión</option>
-                                        <option value="4">Limusina</option>
-                                        <option value="5">Motocicleta</option>
+                                        <option value="Sedan">Sedan</option>
+                                        <option value="SUV">SUV</option>
+                                        <option value="Motocicleta">Motocicleta</option>
                                     </select> 
                                 </div>     
-                                <label >Seleccionar la cantidad de estrellas del servicio:</label> 
-                                <div class="form-group">
-                                    <select class="form-control" name="stars" id="stars">
-                                        <option value="1">1 estrella</option>
-                                        <option value="2">2 estrella</option>
-                                        <option value="3">3 estrella</option>
-                                        <option value="4">4 estrella</option>
-                                        <option value="5">5 estrella</option>
-                                    </select> 
-                                </div>  
                             </div>
                         </div>
                         <div class="col-lg-6 portfolio-item">
@@ -88,25 +71,18 @@ include_once 'public/header.php';
                                 <label >Seleccionar la provincia deseada:</label> 
                                 <div class="form-group">
                                     <select class="form-control" name="provinces" id="provinces">
-                                        <option value="1">Cartago</option>
-                                        <option value="2">San José</option>
-                                        <option value="3">Heredia</option>
-                                        <option value="4">Alajuela</option>
-                                        <option value="5">Puntarenas</option>
-                                        <option value="6">Guanacaste</option>
-                                        <option value="7">Limón</option>
+                                        <option value="Cartago">Cartago</option>
+                                        <option value="San José">San José</option>
+                                        <option value="Heredia">Heredia</option>
+                                        <option value="Alajuela">Alajuela</option>
+                                        <option value="Puntarenas">Puntarenas</option>
+                                        <option value="Guanacaste">Guanacaste</option>
+                                        <option value="Limón">Limón</option>
                                     </select> 
                                 </div> 
-                                <label >Seleccionar si desea disponibiliad inmediata:</label> 
-                                <div class="form-group">
-                                    <select class="form-control" name="available" id="available">
-                                        <option value="0">Si</option>
-                                        <option value="1">No</option>
-                                    </select> 
-                                </div>  
                                 <br/>
                                 <div style="text-align: center">
-                                    <font color="#ff0000"><font size="4"> </font></font><input value="BUSCAR" class="btn btn-outline-secondary btn-md" onclick="guessLearnStyle()" type="button">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <font color="#ff0000"><font size="4"> </font></font><input value="BUSCAR" class="btn btn-outline-secondary btn-md" onclick="getRentACars()" type="button">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 </div>
                             </div>
                         </div>
@@ -114,9 +90,7 @@ include_once 'public/header.php';
                 </form>
             </div>
 
-
-
-            <div class="row">
+            <div id="recommendations" class="row">
 
                 <?php foreach ($vars['rentACars'] as $rentacar) { ?>
 
@@ -127,10 +101,10 @@ include_once 'public/header.php';
                                  src="public/img/Rent a Car Logos/<?php echo $rentacar[4] ?>" width="150" height="150">
                             <div class="card-body">
                                 <h4 class="card-title">
-                                    <a style="color:blue;"><?php echo $rentacar[0] ?></a>
+                                    <a style="color:black;"><?php echo $rentacar[0] ?></a>
                                 </h4>
                                 <!-- Estrellas -->
-                                <?php for ($i = 0; $i < $rentacar[7]; $i++) { ?>
+                                <?php for ($i = 0; $i < $rentacar[6]; $i++) { ?>
                                     <span class="fa fa-star" style="color: orange;"></span>
                                 <?php } ?>
                                 <p class="card-text"><?php echo $rentacar[1] ?></p>
@@ -151,5 +125,5 @@ include_once 'public/header.php';
 <br/>
 
 <?php
-include_once 'public/footer.php';
+include 'public/footer.php';
 ?>

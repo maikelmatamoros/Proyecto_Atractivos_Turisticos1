@@ -66,30 +66,20 @@ include_once 'public/header.php';
                 <p class="lead"><strong> <b>Ingrese la siguiente informacion para utilizar el recomendador de alojamientos:</b></strong></p>
 
 
-                <form name="rentACar">
+                <form name="hotel">
                     <div class="row">
                         <div class="col-lg-6 portfolio-item">
                             <div class="card-body">          
                                 <label >Seleccionar el tipo de alojamiento:</label> 
                                 <div class="form-group">
                                     <select class="form-control" name="hotelType" id="hotelType">
-                                        <option value="0">Montaña</option>
-                                        <option value="1">Ciudad</option>
-                                        <option value="2">Cerca Aeropuerto</option>
-                                        <option value="3">Turismo Rural</option>
-                                        <option value="4">De Playa</option>
+                                        <option value="Montaña">Montaña</option>
+                                        <option value="Ciudad">Ciudad</option>
+                                        <option value="Cerca Aeropuerto">Cerca Aeropuerto</option>
+                                        <option value="Turismo Rural">Turismo Rural</option>
+                                        <option value="De Playa">De Playa</option>
                                     </select> 
                                 </div>     
-                                <label >Seleccionar la cantidad de estrellas del servicio:</label> 
-                                <div class="form-group">
-                                    <select class="form-control" name="stars" id="stars">
-                                        <option value="1">1 estrella</option>
-                                        <option value="2">2 estrella</option>
-                                        <option value="3">3 estrella</option>
-                                        <option value="4">4 estrella</option>
-                                        <option value="5">5 estrella</option>
-                                    </select> 
-                                </div>  
                             </div>
                         </div>
                         <div class="col-lg-6 portfolio-item">
@@ -97,25 +87,18 @@ include_once 'public/header.php';
                                 <label >Seleccionar la zona turística deseada:</label> 
                                 <div class="form-group">
                                     <select class="form-control" name="turisticZone" id="turisticZone">
-                                        <option value="1">Guanacaste</option>
-                                        <option value="2">Caribe</option>
-                                        <option value="3">Puntarenas</option>
-                                        <option value="4">Valle Central</option>
-                                        <option value="5">Llanuras del Norte</option>
-                                        <option value="6">Pacífico Central</option>
-                                        <option value="7">Pacífico Sur</option>
+                                        <option value="Guanacaste">Guanacaste</option>
+                                        <option value="Caribe">Caribe</option>
+                                        <option value="Puntarenas">Puntarenas</option>
+                                        <option value="Valle Central">Valle Central</option>
+                                        <option value="Llanuras del Norte">Llanuras del Norte</option>
+                                        <option value="Pacífico Central">Pacífico Central</option>
+                                        <option value="Pacífico Sur">Pacífico Sur</option>
                                     </select> 
                                 </div> 
-                                <label >Seleccionar si desea disponibiliad inmediata:</label> 
-                                <div class="form-group">
-                                    <select class="form-control" name="available" id="available">
-                                        <option value="0">Si</option>
-                                        <option value="1">No</option>
-                                    </select> 
-                                </div>  
                                 <br/>
                                 <div style="text-align: center">
-                                    <font color="#ff0000"><font size="4"> </font></font><input value="BUSCAR" class="btn btn-outline-secondary btn-md" onclick="guessLearnStyle()" type="button">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <font color="#ff0000"><font size="4"> </font></font><input value="BUSCAR" class="btn btn-outline-secondary btn-md" onclick="getHotels()" type="button">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 </div>
                             </div>
                         </div>
@@ -125,7 +108,7 @@ include_once 'public/header.php';
 
 
 
-            <div class="row">
+            <div id="recommendations" class="row">
 
                 <?php foreach ($vars['hotels'] as $hotel) { ?>
 
@@ -136,7 +119,7 @@ include_once 'public/header.php';
                                  src="public/img/Hotel Logos/<?php echo $hotel[4] ?>" width="150" height="150">
                             <div class="card-body">
                                 <h4 class="card-title">
-                                    <a style="color:blue;"><?php echo $hotel[0] ?></a>
+                                    <a style="color:black;"><?php echo $hotel[0] ?></a>
                                 </h4>
 
                                 <!-- Estrellas -->

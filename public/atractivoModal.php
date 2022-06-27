@@ -2,16 +2,16 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content text-center">
             <div class="modal-header">
-                <h5 class="modal-title w-100" id="modal-Title"></h5>
+                <h4 class="modal-title w-100" id="title-modal"></h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
                 <!-- <img class="card-img-top img-fluid" src="public/img/atractivos/parquelaamistad.png" alt="Second slide"> -->
-                <p align="justify" id="modal-description"></h4>
+                <p align="justify" id="modal-description"></p>
                 <div class="d-flex justify-content-center" id="modal-map">
-
+                
                 </div>
                 <br>
                 <br>

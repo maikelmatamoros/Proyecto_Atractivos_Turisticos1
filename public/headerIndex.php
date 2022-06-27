@@ -36,7 +36,7 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="#" id="mapa" data-toggle="modal" data-target="#siteMapModal" >Mapa del Sitio</a>
+                            <a class="nav-link" href="#graph" id="mapa" >Mapa del Sitio</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="?controlador=AboutUs&accion=showAboutUsView"> ¿Quiénes somos?</a>
@@ -61,7 +61,7 @@
             </div>
         </nav>
         
-        <div class="modal fade" id="siteMapModal" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true" style="align-content: center;">
+        <!-- <div class="modal fade" id="siteMapModal" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true" style="align-content: center;">
                 <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content text-center">
                         <div class="modal-header">
@@ -79,7 +79,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+        </div> -->
         <!-- Page Content -->
         <div>
 

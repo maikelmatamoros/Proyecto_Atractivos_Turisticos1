@@ -1,9 +1,12 @@
-const recomendarAtractivos = (data) =>{
+let data = [];
+
+const recomendarAtractivos = (datos) =>{
+  data = datos;
   $template = document.getElementById("template-card").content;
   $fragment = document.createDocumentFragment();
   document.getElementById("fila-content").innerHTML = "";
   // const dataAux = data.slice(0,9);
-  data.forEach((el) => {
+  shuffle(data).slice(0,6).forEach((el) => {
     // console.log(JSON.stringify(el));
     if (el.tipolugar == "Parque" || el.tipolugar == "Reserva") {
       $template.getElementById("icono").innerHTML =
@@ -43,29 +46,27 @@ const recomendarAtractivos = (data) =>{
     $template.querySelector(".carousel").id = `carousel${el.id}`;
     $template.querySelector(".carousel-control-prev").href = `#carousel${el.id}`;
     $template.querySelector(".carousel-control-next").href = `#carousel${el.id}`;
-    $template.querySelector(".btn").id = el.id;
+    $template.querySelector(".card-btn").id = el.id;
     let $clone = document.importNode($template, true);
     $fragment.appendChild($clone);
   });
   document.getElementById("fila-content").appendChild($fragment);
 };
 
-// document.addEventListener("click",(e)=>{
+document.addEventListener("click",(e)=>{
   
-//   if(e.target.matches(".btn-buscar")){
-//     recomendarAtractivos();
-//   }else if(e.target.matches(".btn")){
-//     const id = e.target.id;
-//     const result = data.find(obj => {
-//       return obj.id == id
-//     })
-//     document.getElementById("modal-Title").innerHTML = result.nombre;
-//     document.getElementById("modal-description").innerHTML = result.descripcion;
-//     document.getElementById("modal-map").innerHTML =`<iframe src="${result.mapa}" width="500" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>` ;
-//     document.getElementById("modal-video").src = `https://www.youtube.com/embed/${result.video}`;
-//     $('#modal').modal("show")
-//   }
-// })
+  if(e.target.matches(".card-btn")){
+    const id = e.target.id;
+    const result = data.find(obj => {
+      return obj.id == id
+    })
+    document.getElementById("title-modal").innerHTML = result.nombre;
+    document.getElementById("modal-description").innerHTML = result.descripcion;
+    document.getElementById("modal-map").innerHTML =`<iframe src="${result.mapa}" width="500" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>` ;
+    document.getElementById("modal-video").src = `https://www.youtube.com/embed/${result.video}`;
+    $('#modal').modal("show")
+  }
+})
 
 /**
  * While the current index is not zero, set the current index to the random index, then decrement the
@@ -133,9 +134,9 @@ const guardarProbabilidesAtractivos= async (probabilidades)=>{
 const generarProbabilidadesAtractivos = () => {
   let nc=0, m=4,p=0;
 
-  let precio=1/3, turista=1/4, tipoAtractivo=1/7, estrellas=1/6;
+  let precio=1/3, turista=1/4, tipoAtractivo=1/7, estrellas=1/5;
 
-  let clase1=25,clase2=18, clase3=24,clase4=30;
+  let clase1=34,clase2=27, clase3=15,clase4=21;
 
   const probabilidades = [];
        /*Se recorre el array para poder guardar las frecuencias, el n de cada registro*/
@@ -309,7 +310,7 @@ const determinarAtractivos=()=> {
   /*Con las probabilidades obtenidas, se revisa cual es la mayor y se le aclara al usuario en la
     vista donde ingresó la información*/
   let clase;
-  if(claseA>claseB && claseA>C && claseA>claseD) clase = 1;
+  if(claseA>claseB && claseA>claseC && claseA>claseD) clase = 1;
   else if(claseB>claseA && claseB>claseC && claseB>claseD) clase = 2;
   else if(claseC>claseA && claseC>claseB && claseC>claseD) clase = 3;
   else if(claseD>claseA && claseD>claseB && claseD>claseC) clase = 4;
@@ -320,7 +321,7 @@ const determinarAtractivos=()=> {
 }
 
 const obtenerAtractivosPorClaseRecomendada = async (clase) => {
-  alert(clase);
+  // alert(clase);
   let res = await fetch(
       "?controlador=Atractivo&accion=obtenerAtractivosPorClaseRecomendada",{
         method: "POST",
@@ -332,12 +333,9 @@ const obtenerAtractivosPorClaseRecomendada = async (clase) => {
       }
     ),
     json = await res.text();
-    json = json.replace(`<br />
-    <b>Deprecated</b>:  Automatically populating $HTTP_RAW_POST_DATA is deprecated and will be removed in a future version. To avoid this warning set 'always_populate_raw_post_data' to '-1' in php.ini and use the php://input stream instead. in <b>Unknown</b> on line <b>0</b><br />
-    <br />
-    <b>Warning</b>:  Cannot modify header information - headers already sent in <b>Unknown</b> on line <b>0</b><br />`, '')
-    console.log(json);
-    // recomendarAtractivos(JSON.parse(json));
+    json = json.substring(json.indexOf("["));
+    
+    recomendarAtractivos(JSON.parse(json));
 };
 
 

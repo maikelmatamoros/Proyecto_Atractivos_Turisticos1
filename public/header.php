@@ -20,6 +20,8 @@
         <script type="text/javascript" src="public/js/siteMap.js"></script>  
         <script type="text/javascript" src="public/js/jquery-3.3.1.js"></script>
         <!-- <script type="text/javascript" src="public/js/siteMap.js"></script> -->
+        <script type="text/javascript" src="public/js/siteMap.js"></script>
+        <script type="text/javascript" src="public/js/methods.js"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.js"></script>
 
         <script src="https://kit.fontawesome.com/0ca66e1d09.js" crossorigin="anonymous"></script>
@@ -43,7 +45,7 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="#" id="mapa" data-toggle="modal" data-target="#siteMapModal" >Mapa del Sitio</a>
+                            <a class="nav-link" href="#graph" id="mapa" >Mapa del Sitio</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="?controlador=AboutUs&accion=showAboutUsView"> ¿Quiénes somos?</a>
@@ -68,7 +70,13 @@
             </div>
         </nav>
 
-        <div class="modal fade" id="siteMapModal" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true" style="align-content: center;">
+        <!-- <div class="jumbotron text-center" Style="background-color: white;">
+            <div class="align-center text-center">
+                <div id="graph"></div>
+            </div>
+        </div> -->
+
+        <!-- <div class="modal fade" id="siteMapModal" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true" style="align-content: center;">
                 <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content text-center">
                         <div class="modal-header">
@@ -86,7 +94,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+        </div> -->
 
         <!-- Page Content -->
         <div class="container">

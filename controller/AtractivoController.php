@@ -50,7 +50,6 @@ class AtractivoController {
         $helper = new AtractivosModel();
         $datosAtractivos=$helper->obtenerAtractivosPorClaseRecomendada(trim(file_get_contents("php://input")));
         header('Content-Type: application/json');
-        ob_start("ob_gzhandler");
         echo json_encode($datosAtractivos);//convierte el objeto en json    
     }  
       

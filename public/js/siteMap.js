@@ -1,4 +1,10 @@
-const drawMap = () =>{
+
+$(document).ready(function () {
+    $('#graph').html(drawMap());
+});
+
+function drawMap(){
+// const drawMap = () =>{
 
     var nodes = new vis.DataSet([
         {
@@ -98,12 +104,11 @@ const drawMap = () =>{
             window.open(node.url, '_self');
         }
     });
-
 };
 
-document.addEventListener("DOMContentLoaded",()=>{
-    document.getElementById("mapa").addEventListener('click', (e)=> {
-        drawMap();
-    });
-})
+// document.addEventListener("DOMContentLoaded",()=>{
+//     document.getElementById("mapa").addEventListener('click', (e)=> {
+//         drawMap();
+//     });
+// })
 

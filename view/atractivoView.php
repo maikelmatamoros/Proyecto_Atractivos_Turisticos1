@@ -67,7 +67,6 @@
                             <label>Seleccionar las estrellas:</label>
                             <div class="form-group">
                                 <select class="form-control" name="estrellas" id="estrellas">
-                                    <option value="0">0</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
@@ -128,7 +127,7 @@
                                     <h6 id="precio"></h6>
                                 </div>
 
-                                <button class="btn btn-default text-uppercase mt-auto">Explorar</button>
+                                <button class="btn card-btn btn-default text-uppercase mt-auto">Explorar</button>
                             </div>
                         </div>
                     </div>
