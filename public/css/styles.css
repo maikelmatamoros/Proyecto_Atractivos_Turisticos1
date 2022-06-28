@@ -1,6 +1,6 @@
 html{
     scroll-behavior: smooth;
-    transition: all 0.3 ease-out;
+    transition: all 1 ease-out;
 }
 
 .row {

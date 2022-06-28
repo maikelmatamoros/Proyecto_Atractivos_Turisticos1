@@ -3,7 +3,7 @@
 
 <!-- Footer -->
         <div class="jumbotron text-center" Style="background-color: white;">
-            <div class="align-center text-center">
+            <div class="col-12">
                 <div id="graph"></div>
             </div>
         </div>

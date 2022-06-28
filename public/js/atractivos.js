@@ -1,13 +1,16 @@
+//Arreglo donde se guardan los datos de los atractivos
 let data = [];
 
+
+//Método que recibe el arreglo de datos de los atractivos para poder visualizar en pantalla
 const recomendarAtractivos = (datos) =>{
   data = datos;
   $template = document.getElementById("template-card").content;
   $fragment = document.createDocumentFragment();
   document.getElementById("fila-content").innerHTML = "";
-  // const dataAux = data.slice(0,9);
+  //Se revuelven los atractivos y se retornan los primeros 6
   shuffle(data).slice(0,6).forEach((el) => {
-    // console.log(JSON.stringify(el));
+    //dependiendo el tipo de lugar, se le agrega el Icono correcto
     if (el.tipolugar == "Parque" || el.tipolugar == "Reserva") {
       $template.getElementById("icono").innerHTML =
         '<i class="fa fa-tree"></i>';
@@ -28,6 +31,7 @@ const recomendarAtractivos = (datos) =>{
         '<i class="fas fa-volcano"></i>';
     }
 
+    //se le agregan los demás datos a la carta a agregar
     $template.getElementById("nombre").textContent = el.nombre;
     $template.getElementById(
       "tipo"
@@ -50,6 +54,7 @@ const recomendarAtractivos = (datos) =>{
     let $clone = document.importNode($template, true);
     $fragment.appendChild($clone);
   });
+  //se agrega el fragment a la vista con las cartas
   document.getElementById("fila-content").appendChild($fragment);
 };
 
@@ -69,8 +74,7 @@ document.addEventListener("click",(e)=>{
 })
 
 /**
- * While the current index is not zero, set the current index to the random index, then decrement the
- * current index, and swap the current index with the random index.
+ * Metodo que revuelve los valores de un array
  * @param array - the array to be shuffled
  * @returns The array is being returned.
  */
@@ -91,7 +95,6 @@ const shuffle = (array) => {
 
 //Esta porción del código se encarga de guardar en la base de datos las probabilidades
 //NOTA: Se utilizó una sola vez llamandolo en el eventListener del DOMContentLoaded
-//NOTA2: 
 //--------------------------------------------------------------------------------------------//
 
 //Arreglo donde se guardan las frecuencias para sacar las probabilidades de los atributos con 
@@ -132,48 +135,42 @@ const guardarProbabilidesAtractivos= async (probabilidades)=>{
 
 //Método que genera las probabilides en base a las frecuencias extraidas de la base de datos
 const generarProbabilidadesAtractivos = () => {
+  //se inicializan las variables necesarias
   let nc=0, m=4,p=0;
-
   let precio=1/3, turista=1/4, tipoAtractivo=1/7, estrellas=1/5;
-
   let clase1=34,clase2=27, clase3=15,clase4=21;
-
   const probabilidades = [];
-       /*Se recorre el array para poder guardar las frecuencias, el n de cada registro*/
+  
+  /*Se recorre el array para poder guardar las frecuencias, el n de cada registro*/
   frecuenciaAtractivos.forEach(el => {
     if (el.atributo === "precio" && el.clase === "1") {
       nc = el.frecuencia;
       p = precio;
       n = clase1;
-
     } else if (el.atributo === "precio" && el.clase === "2") {
       nc = el.frecuencia;
       p = precio;
       n = clase2;
-
     } else if (el.atributo === "precio" && el.clase === "3") {
       nc = el.frecuencia;
       p = precio;
       n = clase3;
     } else if (el.atributo === "precio" && el.clase === "4") {
-        nc = el.frecuencia;
-        p = precio;
-        n = clase4;
+      nc = el.frecuencia;
+      p = precio;
+      n = clase4;
     } else if (el.atributo === "tipoturista" && el.clase === "1") {
       nc = el.frecuencia;
       p = turista;
       n = clase1;
-
     } else if (el.atributo === "tipoturista" && el.clase === "2") {
       nc = el.frecuencia;
       p = turista;
       n = clase2;
-
     } else if (el.atributo === "tipoturista" && el.clase === "3") {
       nc = el.frecuencia;
       p = turista;
       n = clase3;
-
     }else if (el.atributo === "tipoturista" && el.clase === "4") {
       nc = el.frecuencia;
       p = turista;
@@ -182,12 +179,10 @@ const generarProbabilidadesAtractivos = () => {
       nc = el.frecuencia;
       p = tipoAtractivo;
       n = clase1;
-
     } else if (el.atributo === "tipolugar" && el.clase === "2") {
       nc = el.frecuencia;
       p = tipoAtractivo;
       n = clase2;
-
     } else if (el.atributo === "tipolugar" && el.clase === "3") {
       nc = el.frecuencia;
       p = tipoAtractivo;
@@ -213,6 +208,8 @@ const generarProbabilidadesAtractivos = () => {
       p=estrellas;
       n=clase4;
     }         
+
+    //se genera la formula para las probabilidades de bayes
     let probabilidad = (Number(nc) + Number(m * p)) / (Number(n) + Number(m));
     /*Se crea un objeto donde se guardara los resultados de las probabilidades para luego guardarlo 
       en un array */
@@ -244,9 +241,11 @@ const obtenerProbabilidadesAtributoAtractivos = async () => {
     let json2 = await res2.text();
     probabilidadesAtributos = JSON.parse(json1.replace('<!--Llamada al FrontController-->', ''));
     probabilidadesClase = JSON.parse(json2.replace('<!--Llamada al FrontController-->', ''));
-    // console.log(JSON.stringify(probabilidadesAtributos));
 };
 
+
+//metodo que recibe los datos elegidos en el formulario por el usuario y le genera la clase 
+//a la que está vinvulados los atractivos más favorables
 const determinarAtractivos=()=> {
   //Se declaran variables para guardar los resultados de los atributos para cada clase
   let precioClaseA=0, tipoTuristaClaseA=0, tipoLugarClaseA=0, estrellasClaseA=0;
@@ -259,14 +258,11 @@ const determinarAtractivos=()=> {
   const tipoTurista=document.getElementById("tipoTurista").value;
   const tipoLugar=document.getElementById("tipoLugar").value;
   const estrellas=document.getElementById("estrellas").value;
-  console.log(precio,tipoTurista,tipoLugar,estrellas);
 
   /*Se recorre el array donde se tienen guardadas las probabilidades, se evalua el atributo y el valor 
   con el ingresado por el usuario para asi poder encontrar en el array la probabilidad correcta de 
   cada atributo*/
   probabilidadesAtributos.forEach((el,i)=>{
-    // console.log(JSON.stringify(el))
- 
     if (el.atributo=="precio" && el.valor==precio){
       if(el.clase == "1") precioClaseA=el.probabilidad;
       else if(el.clase == "2") precioClaseB=el.probabilidad;
@@ -315,11 +311,12 @@ const determinarAtractivos=()=> {
   else if(claseC>claseA && claseC>claseB && claseC>claseD) clase = 3;
   else if(claseD>claseA && claseD>claseB && claseD>claseC) clase = 4;
 
-  console.log("La clase es: " + clase);
+  //Se manda a buscar los atractivos que cumplan con esa clase obtenida
   obtenerAtractivosPorClaseRecomendada(clase);
-
 }
 
+
+//recibe una clase y va a la base de datos a obtener los atraactivos que cumplan con dicha clase
 const obtenerAtractivosPorClaseRecomendada = async (clase) => {
   // alert(clase);
   let res = await fetch(
@@ -334,7 +331,7 @@ const obtenerAtractivosPorClaseRecomendada = async (clase) => {
     ),
     json = await res.text();
     json = json.substring(json.indexOf("["));
-    
+    //llama al metodo que genera la vista de manera dinámica
     recomendarAtractivos(JSON.parse(json));
 };
 

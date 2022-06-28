@@ -8,6 +8,7 @@ class AtractivosModel{
         $this->db = SPDO::singleton();
     }
 
+    //metodo que obteniene las Frecuencias de los Atractivos
     public function obtenerFrecuenciasAtractivos(){
         $this->db->exec("set names utf8");
         $consulta = $this->db->prepare('
@@ -18,6 +19,7 @@ class AtractivosModel{
         return $resultado;
     }
 
+    //método que obtiene de la base de datos las probabilidades de los atributos
     public function obtenerProbabilidaesAtributoAtractivos(){
         $this->db->exec("set names utf8");
         $consulta = $this->db->prepare('
@@ -28,6 +30,7 @@ class AtractivosModel{
         return $resultado;
     }
 
+    //método que obtiene la probabilidad de las clases de los atractivos
     public function obtenerProbabilidaesClaseAtractivos(){
         $this->db->exec("set names utf8");
         $consulta = $this->db->prepare('
@@ -38,6 +41,12 @@ class AtractivosModel{
         return $resultado;
     }
 
+
+    /**
+     * Retorna los datos de los atractivos relacionados con la clase denominada
+     * 
+     * @param clase 1
+     */
     public function obtenerAtractivosPorClaseRecomendada($clase){
         $this->db->exec("set names utf8");
         $consulta = $this->db->prepare('
@@ -61,6 +70,11 @@ class AtractivosModel{
         return $resultado;
     }
 
+    /**
+     * Recibe un arreglo con las probabilidades y las guarda en la base de datos
+     * 
+     * @param data array of arrays
+     */
     public function generarProbabilidaesAtributoAtractivos($data) {
         $this->db->exec("set names utf8");
         $probabilidad=array();
