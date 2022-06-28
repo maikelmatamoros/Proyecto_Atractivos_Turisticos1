@@ -1,10 +1,19 @@
 @import url(https://fonts.googleapis.com/css?family=Walter+Turncoat);
 
 #graph {
-  width:40vh;
-  height:40vh;
+  width:60vh;
+  height:60vh;
   margin:auto;
   font-size: 10px;
   font-weight: bold;
 }
 
+@media only screen and (max-width: 768px) {
+  #graph {
+    width:40vh;
+    height:40vh;
+    margin:auto;
+    font-size: 10px;
+    font-weight: bold;
+  }
+}
