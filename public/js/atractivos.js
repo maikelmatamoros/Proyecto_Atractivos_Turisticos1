@@ -247,6 +247,7 @@ const obtenerProbabilidadesAtributoAtractivos = async () => {
 //metodo que recibe los datos elegidos en el formulario por el usuario y le genera la clase 
 //a la que está vinvulados los atractivos más favorables
 const determinarAtractivos=()=> {
+  document.getElementById("fila-content").innerHTML="Cargando, por favor espere...";
   //Se declaran variables para guardar los resultados de los atributos para cada clase
   let precioClaseA=0, tipoTuristaClaseA=0, tipoLugarClaseA=0, estrellasClaseA=0;
   let precioClaseB=0, tipoTuristaClaseB=0, tipoLugarClaseB=0, estrellasClaseB=0;
