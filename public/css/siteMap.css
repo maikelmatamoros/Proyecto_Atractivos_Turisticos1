@@ -1,7 +1,10 @@
 @import url(https://fonts.googleapis.com/css?family=Walter+Turncoat);
 
 #graph {
-  width:80vh;
-  height:80vh;
+  width:40vh;
+  height:40vh;
   margin:auto;
+  font-size: 10px;
+  font-weight: bold;
 }
+
